@@ -17,7 +17,7 @@ body_class: page-about
     <figure class="profile">
       <div class="profile-photo">
         <img src="{{ '/assets/images/lawyer.jpg' | relative_url }}" alt="{{ office.lawyer_title }} {{ office.lawyer_name }}" onerror="this.remove()">
-        <span class="profile-placeholder" aria-hidden="true">現</span>
+        <span class="profile-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg></span>
       </div>
       <figcaption>
         <span>{{ office.lawyer_title }}</span>
@@ -26,7 +26,7 @@ body_class: page-about
     </figure>
 
     <div class="about-body">
-      <h2 class="about-title">의뢰인의 이야기를<br>끝까지 듣는 변호사</h2>
+      <h2 class="about-title">충분히 듣고,<br>분명하게 말하는 변호사</h2>
       <div class="greeting">
         {{ office.greeting | newline_to_br }}
       </div>
