@@ -35,11 +35,6 @@
       if (empty) empty.hidden = shown > 0;
     });
   });
-  // 메인의 분야 카드에서 넘어온 경우 (/cases/#이혼)
-  if (location.hash) {
-    var target = decodeURIComponent(location.hash.slice(1));
-    buttons.forEach(function (b) { if (b.dataset.filter === target) b.click(); });
-  }
 
   // 주소 복사
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
