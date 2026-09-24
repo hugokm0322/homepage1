@@ -1,0 +1,18 @@
+{% assign office = site.data.office %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="{{ '/' | relative_url }}">
+      <span class="logo-mark" aria-hidden="true">現</span>
+      <span class="logo-text">법률사무소 <strong>현주</strong></span>
+    </a>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav">
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>변호사 소개</a>
+      <a href="{{ '/cases/' | relative_url }}" {% if page.url contains '/cases/' %}aria-current="page"{% endif %}>승소 사례</a>
+      <a href="{{ '/location/' | relative_url }}" {% if page.url == '/location/' %}aria-current="page"{% endif %}>오시는 길</a>
+      <a class="nav-call" href="tel:{{ office.phone | remove: '-' }}">상담 {{ office.phone }}</a>
+    </nav>
+  </div>
+</header>

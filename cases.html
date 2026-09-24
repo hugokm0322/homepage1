@@ -1,0 +1,42 @@
+---
+layout: default
+title: 승소 사례
+permalink: /cases/
+body_class: page-cases
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow eyebrow--light">Cases</p>
+    <h1>승소 사례</h1>
+    <p class="page-hero-lead">법률사무소 현주가 의뢰인과 함께 만들어 온 결과입니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {% assign cases = site.cases | sort: 'date' | reverse %}
+    <div class="filter" role="group" aria-label="분야별 보기">
+      <button type="button" class="filter-btn is-active" data-filter="all">전체 <span>{{ cases.size }}</span></button>
+      {% assign categories = "이혼,상속,가사" | split: "," %}
+      {% for cat in categories %}
+        {% assign n = cases | where: 'category', cat | size %}
+        <button type="button" class="filter-btn" data-filter="{{ cat }}">{{ cat }} <span>{{ n }}</span></button>
+      {% endfor %}
+    </div>
+
+    {% if cases.size > 0 %}
+    <div class="case-list" id="case-list">
+      {% for case in cases %}
+      <div class="case-item" data-category="{{ case.category }}">
+        {% include case-card.html case=case %}
+      </div>
+      {% endfor %}
+    </div>
+    <p class="empty" id="case-empty" hidden>해당 분야의 사례가 아직 없습니다.</p>
+    {% else %}
+    <p class="empty">등록된 승소 사례가 없습니다.</p>
+    {% endif %}
+
+    <p class="disclaimer">※ 승소 사례는 개별 사건의 결과이며, 유사한 사건에서 같은 결과를 보장하지 않습니다. 의뢰인의 개인정보 보호를 위해 사건 내용 일부를 각색하였습니다.</p>
+  </div>
+</section>

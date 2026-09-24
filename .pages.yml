@@ -1,0 +1,76 @@
+# Pages CMS 설정 (https://pagescms.org)
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: cases
+    label: 승소 사례
+    type: collection
+    path: _cases
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    view:
+      fields: [title, category, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 게시일
+        type: date
+        required: true
+      - name: category
+        label: 분야
+        type: select
+        required: true
+        options:
+          values: [이혼, 상속, 가사]
+      - name: result
+        label: 결과 요약 (한 줄)
+        type: string
+        description: "예: 재산분할 기여도 50% 인정"
+      - name: summary
+        label: 사건 요약
+        type: text
+        description: 목록에 보이는 2~3줄 요약입니다.
+      - name: image
+        label: 대표 사진
+        type: image
+        description: 목록과 글 상단에 표시됩니다. (선택)
+      - name: photos
+        label: 추가 사진
+        type: image
+        list: true
+        description: 글 하단 사진 모음에 표시됩니다. (선택)
+      - name: body
+        label: 본문
+        type: rich-text
+        description: 본문 중간에도 사진을 넣을 수 있습니다.
+
+  - name: office
+    label: 사무소 정보
+    type: file
+    path: _data/office.yml
+    fields:
+      - { name: name, label: 사무소명, type: string }
+      - { name: lawyer_name, label: 변호사 이름, type: string }
+      - { name: lawyer_title, label: 직함, type: string }
+      - { name: phone, label: 전화, type: string }
+      - { name: fax, label: 팩스, type: string }
+      - { name: email, label: 이메일, type: string }
+      - { name: address, label: 주소 (지도 검색에 사용), type: string }
+      - { name: address_detail, label: 주소 보충 설명, type: string }
+      - { name: hours, label: 상담 시간, type: string }
+      - { name: parking, label: 주차 안내, type: string }
+      - { name: subway, label: 지하철, type: string }
+      - { name: bus, label: 버스, type: string }
+      - { name: greeting, label: 인사말, type: text }
+      - { name: education, label: 학력, type: string, list: true }
+      - { name: career, label: 경력, type: string, list: true }

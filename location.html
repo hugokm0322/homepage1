@@ -1,0 +1,64 @@
+---
+layout: default
+title: 오시는 길
+permalink: /location/
+body_class: page-location
+---
+{% assign office = site.data.office %}
+{% assign q = office.address | url_encode %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow eyebrow--light">Location</p>
+    <h1>오시는 길</h1>
+    <p class="page-hero-lead">방문 상담은 사전 예약제로 운영됩니다. 오시기 전 전화로 예약해 주세요.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container location-grid">
+    <div class="map-wrap">
+      <iframe
+        title="{{ office.name }} 약도"
+        src="https://maps.google.com/maps?q={{ q }}&z=16&hl=ko&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+      <div class="map-links">
+        <a class="btn btn-outline btn-sm" href="https://map.naver.com/p/search/{{ q }}" target="_blank" rel="noopener">네이버 지도</a>
+        <a class="btn btn-outline btn-sm" href="https://map.kakao.com/?q={{ q }}" target="_blank" rel="noopener">카카오맵</a>
+        <button type="button" class="btn btn-outline btn-sm" data-copy="{{ office.address | escape }}">주소 복사</button>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h2>{{ office.name }}</h2>
+      <dl class="contact-list">
+        <div><dt>주소</dt><dd>{{ office.address }}<br><small>{{ office.address_detail }}</small></dd></div>
+        <div><dt>전화</dt><dd><a href="tel:{{ office.phone | remove: '-' }}">{{ office.phone }}</a></dd></div>
+        <div><dt>팩스</dt><dd>{{ office.fax }}</dd></div>
+        <div><dt>이메일</dt><dd><a href="mailto:{{ office.email }}">{{ office.email }}</a></dd></div>
+        <div><dt>상담 시간</dt><dd>{{ office.hours }}</dd></div>
+      </dl>
+      <a class="btn btn-primary btn-block" href="tel:{{ office.phone | remove: '-' }}">전화로 상담 예약하기</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="transport-grid">
+      <div class="transport">
+        <h3>지하철</h3>
+        <p>{{ office.subway }}</p>
+      </div>
+      <div class="transport">
+        <h3>버스</h3>
+        <p>{{ office.bus }}</p>
+      </div>
+      <div class="transport">
+        <h3>주차</h3>
+        <p>{{ office.parking }}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,114 @@
+---
+layout: default
+body_class: page-home
+---
+{% assign office = site.data.office %}
+<section class="hero">
+  <div class="hero-bg" style="background-image: url('{{ '/assets/images/office.jpg' | relative_url }}');" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <p class="eyebrow eyebrow--light">가사 · 상속 · 이혼 전문</p>
+    <h1>가족의 문제,<br>끝까지 곁에서 함께합니다.</h1>
+    <p class="hero-lead">
+      법률사무소 현주는 이혼·상속·가사 사건만을 깊이 다룹니다.<br class="br-desktop">
+      상담부터 판결까지 대표변호사가 직접 사건을 맡습니다.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-wood" href="tel:{{ office.phone | remove: '-' }}">전화 상담 {{ office.phone }}</a>
+      <a class="btn btn-ghost" href="{{ '/cases/' | relative_url }}">승소 사례 보기</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Practice Areas</p>
+      <h2>전문 분야</h2>
+    </div>
+    <div class="card-grid">
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        </span>
+        <h3>이혼</h3>
+        <p>협의·재판상 이혼, 위자료, 재산분할, 양육권·양육비, 면접교섭까지 이혼의 모든 과정을 함께합니다.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6M5 10v9h14v-9M9 19v-5h6v5"/></svg>
+        </span>
+        <h3>상속</h3>
+        <p>상속재산분할, 유류분 반환, 상속포기·한정승인, 유언 검인 등 상속 분쟁을 해결합니다.</p>
+      </article>
+      <article class="card">
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M13 20a4 4 0 0 1 8 0"/></svg>
+        </span>
+        <h3>가사</h3>
+        <p>친권·후견, 친생자 관계, 입양·파양, 사실혼 해소 등 가족관계 전반의 사건을 다룹니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Why Hyunjoo</p>
+      <h2>법률사무소 현주가 약속드립니다</h2>
+    </div>
+    <ol class="promise-list">
+      <li>
+        <strong>대표변호사 직접 수행</strong>
+        <p>첫 상담부터 서면 작성, 재판 출석까지 사건을 다른 사람에게 넘기지 않습니다.</p>
+      </li>
+      <li>
+        <strong>철저한 비밀 보장</strong>
+        <p>가족의 일은 가장 민감한 이야기입니다. 상담 내용과 사건 정보는 엄격히 보호됩니다.</p>
+      </li>
+      <li>
+        <strong>진행 상황 공유</strong>
+        <p>사건이 어디까지 왔는지, 다음에 무엇이 필요한지 의뢰인이 늘 알 수 있게 알려드립니다.</p>
+      </li>
+      <li>
+        <strong>현실적인 전략</strong>
+        <p>가능한 것과 어려운 것을 솔직하게 말씀드리고, 의뢰인에게 가장 이로운 길을 함께 찾습니다.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow">Cases</p>
+        <h2>최근 승소 사례</h2>
+      </div>
+      <a class="link-more" href="{{ '/cases/' | relative_url }}">전체 보기 →</a>
+    </div>
+    {% assign recent = site.cases | sort: 'date' | reverse %}
+    {% if recent.size > 0 %}
+    <div class="case-list case-list--compact">
+      {% for case in recent limit: 3 %}
+        {% include case-card.html case=case %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">등록된 승소 사례가 없습니다.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container cta-inner">
+    <div>
+      <h2>혼자 고민하지 마세요.</h2>
+      <p>{{ office.hours }}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-wood" href="tel:{{ office.phone | remove: '-' }}">{{ office.phone }}</a>
+      <a class="btn btn-ghost" href="{{ '/location/' | relative_url }}">오시는 길</a>
+    </div>
+  </div>
+</section>

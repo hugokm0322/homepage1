@@ -1,0 +1,15 @@
+{% assign c = include.case %}
+<a class="case-card" href="{{ c.url | relative_url }}">
+  {% if c.image %}
+  <div class="case-thumb"><img src="{{ c.image | relative_url }}" alt="" loading="lazy"></div>
+  {% endif %}
+  <div class="case-body">
+    <p class="case-top">
+      <span class="tag tag--{{ c.category }}">{{ c.category }}</span>
+      <time datetime="{{ c.date | date: '%Y-%m-%d' }}">{{ c.date | date: '%Y. %m. %d.' }}</time>
+    </p>
+    <h3>{{ c.title }}</h3>
+    {% if c.result %}<p class="case-result-line">{{ c.result }}</p>{% endif %}
+    {% if c.summary %}<p class="case-summary">{{ c.summary }}</p>{% endif %}
+  </div>
+</a>

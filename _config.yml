@@ -1,0 +1,26 @@
+title: 법률사무소 현주
+description: 가사 · 상속 · 이혼 전문 법률사무소 현주. 가족의 내일을 함께 지키는 변호사.
+lang: ko
+
+# GitHub Pages 주소가 https://hugokm0322.github.io/homepage1/ 이면 "/homepage1"
+# 개인 도메인을 연결하면 "" 로 바꿔주세요.
+baseurl: "/homepage1"
+url: "https://hugokm0322.github.io"
+
+collections:
+  cases:
+    output: true
+    permalink: /cases/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: cases
+    values:
+      layout: case
+
+exclude:
+  - README.md
+  - .pages.yml
+  - Gemfile
+  - Gemfile.lock

@@ -1,0 +1,55 @@
+---
+layout: default
+body_class: page-case
+---
+{% comment %}Pages CMS가 본문에 넣는 이미지 경로(/assets/uploads/...)에 baseurl을 붙여줍니다.{% endcomment %}
+{% capture upload_src %}src="{{ site.baseurl }}/assets/uploads/{% endcapture %}
+
+<section class="page-hero page-hero--small">
+  <div class="container">
+    <p class="eyebrow"><a href="{{ '/cases/' | relative_url }}">승소 사례</a> · {{ page.category }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="case-meta">{{ page.date | date: '%Y. %m. %d.' }}</p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container narrow">
+    {% if page.result %}
+    <div class="case-result">
+      <span class="case-result-label">결과</span>
+      <strong>{{ page.result }}</strong>
+    </div>
+    {% endif %}
+
+    {% if page.image %}
+    <figure class="case-cover">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+    </figure>
+    {% endif %}
+
+    <div class="prose">
+      {{ content | replace: 'src="/assets/uploads/', upload_src }}
+    </div>
+
+    {% if page.photos and page.photos.size > 0 %}
+    <section class="case-gallery" aria-label="사진">
+      <h2>사진</h2>
+      <div class="gallery-grid">
+        {% for photo in page.photos %}
+        <a href="{{ photo | relative_url }}" target="_blank" rel="noopener">
+          <img src="{{ photo | relative_url }}" alt="{{ page.title | escape }} 사진 {{ forloop.index }}" loading="lazy">
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <p class="disclaimer">※ 의뢰인의 개인정보 보호를 위해 사건 내용 일부를 각색하였습니다. 본 사례는 개별 사건의 결과이며, 유사한 사건에서 같은 결과를 보장하지 않습니다.</p>
+
+    <div class="case-nav">
+      <a class="btn btn-outline" href="{{ '/cases/' | relative_url }}">목록으로</a>
+      <a class="btn btn-primary" href="{{ '/location/' | relative_url }}">상담 문의</a>
+    </div>
+  </div>
+</article>

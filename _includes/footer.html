@@ -1,0 +1,15 @@
+{% assign office = site.data.office %}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-name">{{ office.name }}</p>
+      <p>대표변호사 {{ office.lawyer_name }}</p>
+      <p>{{ office.address }}</p>
+      <p>전화 {{ office.phone }} · 팩스 {{ office.fax }} · {{ office.email }}</p>
+    </div>
+    <p class="footer-note">
+      본 홈페이지의 승소 사례는 개별 사건의 결과이며, 유사한 사건에서 같은 결과를 보장하지 않습니다.<br>
+      © {{ site.time | date: '%Y' }} {{ office.name }}. All rights reserved.
+    </p>
+  </div>
+</footer>
