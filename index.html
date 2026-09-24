@@ -131,18 +131,4 @@ body_class: page-home
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="cta-card">
-      <div>
-        <p class="eyebrow eyebrow--light">Contact</p>
-        <h2>첫 상담에서<br>방향이 보이기 시작합니다.</h2>
-        <p>{{ office.hours }}</p>
-      </div>
-      <div class="cta-actions">
-        <a class="btn btn-light" href="tel:{{ tel }}">{{ office.phone }}</a>
-        <a class="btn btn-ghost" href="{{ '/location/' | relative_url }}">오시는 길</a>
-      </div>
-    </div>
-  </div>
-</section>
+{% include cta.html %}
